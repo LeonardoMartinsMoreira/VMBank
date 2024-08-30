@@ -4,7 +4,7 @@ import React from 'react'
 export default function TabLayout() {
   const isLogged = false
 
-  if (!isLogged) return <Redirect href="/sign-in" />
+  if (!isLogged) return <Redirect href="/choose" />
 
   return (
     <Stack>

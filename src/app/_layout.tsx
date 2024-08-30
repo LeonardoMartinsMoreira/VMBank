@@ -1,13 +1,18 @@
 import { useFonts } from 'expo-font'
-import { Slot, Stack } from 'expo-router'
+import { Stack } from 'expo-router'
 import * as SplashScreen from 'expo-splash-screen'
 import { useEffect } from 'react'
-import { View } from 'react-native'
+import { useColorScheme } from 'react-native'
 import 'react-native-reanimated'
+import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native'
+import { TamaguiProvider } from 'tamagui'
+import { tamaguiConfig } from '../../tamagui.config'
 
 SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
+  const colorScheme = useColorScheme()
+
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   })
@@ -21,12 +26,17 @@ export default function RootLayout() {
   if (!loaded) {
     return null
   }
-n
+
   return (
-    <Stack>
-      <Stack.Screen name="sign-in" options={{ headerShown: false }} />
-      <Stack.Screen name="sign-up" options={{ headerShown: false }} />
-      <Stack.Screen name="(app)" options={{ headerShown: false }} />
-    </Stack>
+    <TamaguiProvider config={tamaguiConfig} defaultTheme={colorScheme!}>
+      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <Stack>
+          <Stack.Screen name="sign-in" options={{ headerShown: false, contentStyle: { backgroundColor: '#0D0D0C' } }} />
+          <Stack.Screen name="choose" options={{ headerShown: false, contentStyle: { backgroundColor: '#0D0D0C' } }} />
+          <Stack.Screen name="sign-up" options={{ headerShown: false, contentStyle: { backgroundColor: '#0D0D0C' } }} />
+          <Stack.Screen name="(app)" options={{ headerShown: false, contentStyle: { backgroundColor: '#0D0D0C' } }} />
+        </Stack>
+      </ThemeProvider>
+    </TamaguiProvider>
   )
 }
