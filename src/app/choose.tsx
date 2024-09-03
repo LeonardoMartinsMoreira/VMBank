@@ -1,9 +1,11 @@
-import { Link } from 'expo-router'
+import { router } from 'expo-router'
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 import { Button, Image } from 'tamagui'
 
 export default function Choose() {
+  const handleNavigateToLogin = () => router.navigate('/sign-in')
+
   return (
     <View className="flex-1 px-8 gap-y-8">
       <View className="pt-24 items-center">
@@ -16,13 +18,18 @@ export default function Choose() {
             Gerencie suas finanças a qualquer hora e em qualquer lugar com nosso aplicativo de banco online.
           </Text>
         </View>
-        <View className="flex-1 justify-center items-center">
+        <View className="flex-1 gap-y-2 justify-center items-center">
           <Button className="w-full bg-lime-1000" borderRadius="$12">
-            Login
+            Se tornar um cliente
           </Button>
-          <Text className="text-white font-normal mt-4">
-            Já é um cliente? <Text className="text-lime-1000">Login</Text>
-          </Text>
+          <TouchableOpacity
+            className="flex-row py-2 gap-x-1"
+            style={{ borderColor: 'transparent' }}
+            onPress={handleNavigateToLogin}
+          >
+            <Text className="text-white">Já é um cliente?</Text>
+            <Text className="text-lime-1000">Entrar</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>

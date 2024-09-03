@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       colors: {
         'lime-1000': '#B6EF11',
+        'lime-1200': '#83B000',
       },
     },
   },

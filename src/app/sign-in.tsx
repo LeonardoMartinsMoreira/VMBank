@@ -1,5 +1,5 @@
-import { Text } from 'react-native'
+import { View } from 'react-native'
 
 export default function SignIn() {
-  return <Text>singin</Text>
+  return <View></View>
 }
