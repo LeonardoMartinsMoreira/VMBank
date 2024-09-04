@@ -7,8 +7,8 @@ export default function Choose() {
   const handleNavigateToLogin = () => router.navigate('/sign-in')
 
   return (
-    <View className="flex-1 px-8 gap-y-8">
-      <View className="pt-24 items-center">
+    <View className="flex-1 px-4 gap-y-10">
+      <View className="pt-20 items-center">
         <Image source={require('../assets/images/Group (1).png')} className="h-56 w-72" />
       </View>
       <View className="flex-1 justify-center">
