@@ -1,7 +1,6 @@
 import { useFormikContext } from 'formik'
 import React from 'react'
-import { Text, TextInput, TextInputProps } from 'react-native'
-import { View } from 'tamagui'
+import { Text, TextInput, TextInputProps, View } from 'react-native'
 
 interface InputWithFormikProps extends TextInputProps {
   name: string

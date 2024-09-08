@@ -1,8 +1,6 @@
 import { InputWithFormik } from '@/src/components/InputWithFormik'
 import { Formik } from 'formik'
-import { View } from 'react-native'
-import { Button } from 'tamagui'
-import { z } from 'zod'
+import { Button, Text, TouchableOpacity, View } from 'react-native'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 import { useLoginController } from './useLoginController'
 import { SignInSchema } from '../AuthSchemas'
@@ -44,9 +42,9 @@ export default function LoginForm() {
             </View>
 
             <View>
-              <Button className="bg-lime-1000 w-full" onPress={() => handleSubmit()}>
-                Entrar
-              </Button>
+              <TouchableOpacity className="bg-lime-1000 w-full" onPress={() => handleSubmit()}>
+                <Text>Entrar</Text>
+              </TouchableOpacity>
             </View>
           </View>
         )

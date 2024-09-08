@@ -1,7 +1,6 @@
 import { router } from 'expo-router'
 import React from 'react'
-import { Text, TouchableOpacity, View } from 'react-native'
-import { Button, Image } from 'tamagui'
+import { Image, Text, TouchableOpacity, View } from 'react-native'
 
 export default function Choose() {
   const handleNavigateToLogin = () => router.navigate('/sign-in')
@@ -20,9 +19,9 @@ export default function Choose() {
           </Text>
         </View>
         <View className="flex-1 gap-y-2 justify-center items-center">
-          <Button onPress={handleNavigateToSignUp} className="w-full bg-lime-1000" borderRadius="$12">
-            Se tornar um cliente
-          </Button>
+          <TouchableOpacity onPress={handleNavigateToSignUp} className="w-full bg-lime-1000 rounded-xl">
+            <Text> Se tornar um cliente</Text>
+          </TouchableOpacity>
           <TouchableOpacity
             className="flex-row py-2 gap-x-1"
             style={{ borderColor: 'transparent' }}

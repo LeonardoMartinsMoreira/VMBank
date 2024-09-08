@@ -1,14 +1,13 @@
 import { InputWithFormik } from '@/src/components/InputWithFormik'
 import { Formik } from 'formik'
-import { View } from 'react-native'
-import { Button } from 'tamagui'
+import { Text, TouchableOpacity, View } from 'react-native'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 import { useSignUpController } from './useLoginController'
 import { SignUpSchema } from '../AuthSchemas'
 
 const initialValues = { email: '', password: '', name: '' }
 
-export default function SignUpForm() {
+export function SignUpForm() {
   const { mutate } = useSignUpController()
 
   const handleSignUp = (values: typeof initialValues) => {
@@ -52,9 +51,9 @@ export default function SignUpForm() {
             </View>
 
             <View>
-              <Button className="bg-lime-1000 w-full" onPress={() => handleSubmit()}>
-                Entrar
-              </Button>
+              <TouchableOpacity className="bg-lime-1000 w-full" onPress={() => handleSubmit()}>
+                <Text>Entrar</Text>
+              </TouchableOpacity>
             </View>
           </View>
         )
