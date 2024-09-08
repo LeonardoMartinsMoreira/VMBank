@@ -5,6 +5,7 @@ import { Button, Image } from 'tamagui'
 
 export default function Choose() {
   const handleNavigateToLogin = () => router.navigate('/sign-in')
+  const handleNavigateToSignUp = () => router.navigate('/sign-up')
 
   return (
     <View className="flex-1 px-4 gap-y-10">
@@ -14,12 +15,12 @@ export default function Choose() {
       <View className="flex-1 justify-center">
         <View className="items-center justify-center flex-1 gap-y-8">
           <Text className="text-white font-bold text-4xl text-center">Banco onde for com nosso aplicativo</Text>
-          <Text className="text-zinc-400 font-light text-lg text-center">
+          <Text className="text-zinc-400 font-light text-base text-center">
             Gerencie suas finanças a qualquer hora e em qualquer lugar com nosso aplicativo de banco online.
           </Text>
         </View>
         <View className="flex-1 gap-y-2 justify-center items-center">
-          <Button className="w-full bg-lime-1000" borderRadius="$12">
+          <Button onPress={handleNavigateToSignUp} className="w-full bg-lime-1000" borderRadius="$12">
             Se tornar um cliente
           </Button>
           <TouchableOpacity

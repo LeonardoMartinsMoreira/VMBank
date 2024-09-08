@@ -21,7 +21,7 @@
     "@tamagui/button": "^1.108.4",
     "@tamagui/config": "^1.108.4",
     "@tamagui/input": "^1.109.5",
-    "@tamagui/toast": "^1.110.1",
+    "@tamagui/toast": "^1.110.2",
     "@tanstack/react-query": "^5.54.1",
     "axios": "^1.7.7",
     "burnt": "^0.12.2",

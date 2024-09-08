@@ -1,7 +1,7 @@
 import { View, Text, Image } from 'react-native'
 import McIcon from '@expo/vector-icons/MaterialCommunityIcons'
 import { router } from 'expo-router'
-import LoginForm from '../modules/login/LoginForm'
+import LoginForm from '../modules/auth/sign-in/LoginForm'
 
 export default function SignIn() {
   const handleBack = () => router.back()

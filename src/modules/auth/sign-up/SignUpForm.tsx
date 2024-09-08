@@ -1,36 +1,42 @@
 import { InputWithFormik } from '@/src/components/InputWithFormik'
-import { useToastState, useToastController } from '@tamagui/toast'
 import { Formik } from 'formik'
 import { View } from 'react-native'
 import { Button } from 'tamagui'
-import { z } from 'zod'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
+import { useSignUpController } from './useLoginController'
+import { SignUpSchema } from '../AuthSchemas'
 
-const LoginSchema = z.object({
-  email: z.string({ required_error: 'Insira um email' }).email({ message: 'Insira um email válido' }),
-  password: z
-    .string({ required_error: 'Insira uma senha' })
-    .min(8, { message: 'Sua senha deve conter no mínimo 8 caracteres' }),
-})
+const initialValues = { email: '', password: '', name: '' }
 
-const initialValues = { email: '', password: '' }
+export default function SignUpForm() {
+  const { mutate } = useSignUpController()
 
-export default function LoginForm() {
-  const handleLogin = (values: typeof initialValues) => console.log(values)
+  const handleSignUp = (values: typeof initialValues) => {
+    mutate(values)
+  }
 
   return (
     <Formik
-      validationSchema={toFormikValidationSchema(LoginSchema)}
+      validationSchema={toFormikValidationSchema(SignUpSchema)}
       initialValues={initialValues}
-      onSubmit={handleLogin}
+      onSubmit={handleSignUp}
     >
       {({ handleSubmit }) => {
         return (
-          <View className="flex-1 pt-24 gap-y-4">
+          <View className="flex-1 gap-y-4">
+            <View>
+              <InputWithFormik
+                name="name"
+                label="Usuário"
+                placeholder="Usuário"
+                className="w-full bg-zinc-900 py-2 placeholder-white border-lime-1000 border"
+              />
+            </View>
+
             <View>
               <InputWithFormik
                 name="email"
-                label="Usuário"
+                label="Email"
                 placeholder="Email"
                 className="w-full bg-zinc-900 py-2 placeholder-white border-lime-1000 border"
               />
