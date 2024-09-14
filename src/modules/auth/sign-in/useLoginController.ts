@@ -5,7 +5,7 @@ import { TSignInPayload } from '../AuthSchemas'
 export function useLoginController() {
   const { mutate, isPending } = useMutation({
     mutationKey: ['login'],
-    mutationFn: ({ email, password }: TSignInPayload) => api.get(''),
+    mutationFn: (loginPayload: TSignInPayload) => api.post('z', loginPayload),
     onSuccess: () => console.log('gg'),
     onError: () => console.log('f'),
   })

@@ -1,14 +1,16 @@
 import { InputWithFormik } from '@/src/components/InputWithFormik'
 import { Formik } from 'formik'
-import { Text, TouchableOpacity, View } from 'react-native'
+import { View } from 'react-native'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 import { useSignUpController } from './useLoginController'
 import { SignUpSchema } from '../AuthSchemas'
+import { KeyRound, Mail, User2 } from 'lucide-react-native'
+import { Button } from '@/src/components/Button'
 
 const initialValues = { email: '', password: '', name: '' }
 
 export function SignUpForm() {
-  const { mutate } = useSignUpController()
+  const { mutate, isPending } = useSignUpController()
 
   const handleSignUp = (values: typeof initialValues) => {
     mutate(values)
@@ -20,40 +22,48 @@ export function SignUpForm() {
       initialValues={initialValues}
       onSubmit={handleSignUp}
     >
-      {({ handleSubmit }) => {
+      {({ handleSubmit, errors }) => {
+        const hasErrors = Object.keys(errors).length > 0
+
         return (
-          <View className="flex-1 gap-y-4">
+          <View className="flex-1 gap-y-8">
             <View>
               <InputWithFormik
+                iconLeft={User2}
                 name="name"
                 label="Usuário"
                 placeholder="Usuário"
-                className="w-full bg-zinc-900 py-2 placeholder-white border-lime-1000 border"
               />
             </View>
-
             <View>
               <InputWithFormik
+                iconLeft={Mail}
                 name="email"
                 label="Email"
                 placeholder="Email"
-                className="w-full bg-zinc-900 py-2 placeholder-white border-lime-1000 border"
               />
             </View>
-
             <View>
               <InputWithFormik
                 name="password"
                 label="Senha"
                 placeholder="Senha"
-                className="w-full bg-zinc-900 py-2 placeholder-white border-lime-1000 border"
+                type="password"
+                iconLeft={KeyRound}
               />
             </View>
-
-            <View>
-              <TouchableOpacity className="bg-lime-1000 w-full" onPress={() => handleSubmit()}>
-                <Text>Entrar</Text>
-              </TouchableOpacity>
+            <View className="pt-4">
+              <Button
+                isPending={isPending}
+                isDisabled={hasErrors || isPending}
+                className="bg-lime-1000"
+                $disabled-bgColor="$lime500"
+                backgroundColor="$lime500"
+                onPress={() => handleSubmit()}
+                ButtonTextStyle={{ color: '$white', fontWeight: '$normal' }}
+              >
+                Entrar
+              </Button>
             </View>
           </View>
         )

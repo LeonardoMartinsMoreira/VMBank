@@ -1,6 +1,7 @@
 import { router } from 'expo-router'
 import React from 'react'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
+import { Button } from '../components/Button'
 
 export default function Choose() {
   const handleNavigateToLogin = () => router.navigate('/sign-in')
@@ -9,19 +10,32 @@ export default function Choose() {
   return (
     <View className="flex-1 px-4 gap-y-10">
       <View className="pt-20 items-center">
-        <Image source={require('../assets/images/Group (1).png')} className="h-56 w-72" />
+        <Image
+          source={require('../assets/images/Group (1).png')}
+          className="h-56 w-72"
+        />
       </View>
       <View className="flex-1 justify-center">
-        <View className="items-center justify-center flex-1 gap-y-8">
-          <Text className="text-white font-bold text-4xl text-center">Banco onde for com nosso aplicativo</Text>
-          <Text className="text-zinc-400 font-light text-base text-center">
-            Gerencie suas finanças a qualquer hora e em qualquer lugar com nosso aplicativo de banco online.
+        <View className="justify-center flex-1 gap-y-2">
+          <Text className="text-white font-bold text-4xl">
+            Banco onde for com nosso aplicativo
+          </Text>
+          <Text className="text-zinc-400 font-light text-base">
+            Gerencie suas finanças a qualquer hora e em qualquer lugar com nosso
+            aplicativo de banco online.
           </Text>
         </View>
         <View className="flex-1 gap-y-2 justify-center items-center">
-          <TouchableOpacity onPress={handleNavigateToSignUp} className="w-full bg-lime-1000 rounded-xl">
-            <Text> Se tornar um cliente</Text>
-          </TouchableOpacity>
+          <Button
+            className="bg-lime-1000"
+            $disabled-bgColor="$lime500"
+            backgroundColor="$lime500"
+            width={'$full'}
+            onPress={handleNavigateToSignUp}
+            ButtonTextStyle={{ color: '$white', fontWeight: '$normal' }}
+          >
+            Se tornar um cliente
+          </Button>
           <TouchableOpacity
             className="flex-row py-2 gap-x-1"
             style={{ borderColor: 'transparent' }}

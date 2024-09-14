@@ -1,9 +1,9 @@
-import { SignUpSchema, TSignUpPayload } from './../AuthSchemas'
+import { TSignUpPayload } from './../AuthSchemas'
 import { api } from '@/src/services/api'
 import { useMutation } from '@tanstack/react-query'
 
 export function useSignUpController() {
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationKey: ['signUp'],
     mutationFn: (payload: TSignUpPayload) => api.post('user', { payload }),
     onSuccess: () => console.log('gg'),
@@ -12,5 +12,6 @@ export function useSignUpController() {
 
   return {
     mutate,
+    isPending,
   }
 }
