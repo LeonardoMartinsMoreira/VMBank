@@ -58,7 +58,7 @@ const InputWithFormik = ({
           {label}
         </FormControlLabelText>
       </FormControlLabel>
-      <Input borderColor="$lime400" height={'$12'}>
+      <Input borderColor="$lime400" height={'$11'}>
         <When condition={iconLeft}>
           <InputSlot pl={'$3'}>
             <InputIcon as={iconLeft} color="$warmGray400" />

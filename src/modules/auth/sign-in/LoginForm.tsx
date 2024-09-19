@@ -4,19 +4,13 @@ import { View } from 'react-native'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 import { useLoginController } from './useLoginController'
 import { SignInSchema } from '../AuthSchemas'
-import { Heading, KeyRound, Mail } from 'lucide-react-native'
+import { KeyRound, Mail } from 'lucide-react-native'
 import { Button } from '@/src/components/Button'
 import { TouchableOpacity } from 'react-native'
 import { Text } from 'react-native'
-import { Link, Modal, ModalFooter } from '@gluestack-ui/themed'
-import { ModalBackdrop } from '@gluestack-ui/themed'
-import { ModalContent } from '@gluestack-ui/themed'
-import { ModalHeader } from '@gluestack-ui/themed'
-import { ModalCloseButton } from '@gluestack-ui/themed'
-import { CloseIcon } from '@gluestack-ui/themed'
-import { Icon } from '@gluestack-ui/themed'
-import { ModalBody } from '@gluestack-ui/themed'
-import { useRef, useState } from 'react'
+import { Link } from '@gluestack-ui/themed'
+import { useState } from 'react'
+import { RecoveryPasswordModal } from './components/RecoveryPasswordModal'
 
 const initialValues = { email: '', password: '' }
 
@@ -26,8 +20,6 @@ export default function LoginForm() {
 
   const handleLogin = (values: typeof initialValues) => mutate({ ...values })
   const handleRecoveryPassword = () => setShowModal(true)
-
-  const ref = useRef(null)
 
   return (
     <Formik
@@ -48,53 +40,6 @@ export default function LoginForm() {
                 placeholder="Email"
               />
             </View>
-
-            <Modal
-              isOpen={showModal}
-              onClose={() => {
-                setShowModal(false)
-              }}
-              finalFocusRef={ref}
-            >
-              <ModalBackdrop />
-              <ModalContent>
-                <ModalHeader>
-                  <ModalCloseButton>
-                    <Icon as={CloseIcon} />
-                  </ModalCloseButton>
-                </ModalHeader>
-                <ModalBody>
-                  <Text>
-                    Elevate user interactions with our versatile modals.
-                    Seamlessly integrate notifications, forms, and media
-                    displays. Make an impact effortlessly.
-                  </Text>
-                </ModalBody>
-                <ModalFooter>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    action="secondary"
-                    mr="$3"
-                    onPress={() => {
-                      setShowModal(false)
-                    }}
-                  >
-                    Cancel
-                  </Button>
-                  <Button
-                    size="sm"
-                    action="positive"
-                    borderWidth="$0"
-                    onPress={() => {
-                      setShowModal(false)
-                    }}
-                  >
-                    Explore
-                  </Button>
-                </ModalFooter>
-              </ModalContent>
-            </Modal>
 
             <View className="gap-y-3">
               <View>
@@ -126,6 +71,11 @@ export default function LoginForm() {
                 Entrar
               </Button>
             </View>
+
+            <RecoveryPasswordModal
+              setShowModal={setShowModal}
+              showModal={showModal}
+            />
           </View>
         )
       }}
